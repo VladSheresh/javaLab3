@@ -35,20 +35,10 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void changeStatusToRepairs(int roomId) {
+    public void changeStatus(int roomId, Status status) {
         Room room = roomRepository.get(roomId);
         if (room.getStatus() != Status.BUSY) {
-            room.setStatus(Status.REPAIRS);
-        } else {
-            System.out.println("Этот номер занят!!!");
-        }
-    }
-
-    @Override
-    public void changeStatusToServed(int roomId) {
-        Room room = roomRepository.get(roomId);
-        if (room.getStatus() != Status.BUSY) {
-            room.setStatus(Status.SERVED);
+            room.setStatus(status);
         } else {
             System.out.println("Этот номер занят!!!");
         }

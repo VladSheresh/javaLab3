@@ -2,6 +2,7 @@ package javacources.controller;
 
 import javacources.entitiy.Room;
 import javacources.api.services.RoomService;
+import javacources.entitiy.Status;
 import javacources.service.RoomServiceImpl;
 
 public class RoomController {
@@ -29,12 +30,8 @@ public class RoomController {
         roomService.changePrice(roomId, price);
     }
 
-    public void changeStatusToRepairs(int roomId){
-        roomService.changeStatusToRepairs(roomId);
-    }
-
-    public void changeStatusToServed(int roomId){
-        roomService.changeStatusToServed(roomId);
+    public void changeStatus(int roomId, Status status){
+        roomService.changeStatus(roomId, status);
     }
 
     public void settleInRoom(int roomId){
