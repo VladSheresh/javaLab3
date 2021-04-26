@@ -1,16 +1,8 @@
 package javacources.entitiy;
 
-public class Service {
-    private int id;
+public class Service extends BaseEntity {
+
     private int price;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getPrice() {
         return price;

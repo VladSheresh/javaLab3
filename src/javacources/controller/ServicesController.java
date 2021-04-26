@@ -1,6 +1,7 @@
 package javacources.controller;
 
-import javacources.service.ServicesService;
+import javacources.entitiy.Service;
+import javacources.api.services.ServicesService;
 import javacources.service.ServicesServiceImpl;
 
 public class ServicesController {
@@ -19,10 +20,13 @@ public class ServicesController {
     }
 
     public void addServices(int price){
-        servicesService.addServices(price);
+        Service service = new Service();
+        service.setPrice(price);
+        servicesService.add(service);
     }
 
     public void changePrice(int serviceId, int price){
+
         servicesService.changePrice(serviceId, price);
     }
 }

@@ -1,17 +1,14 @@
 package javacources.entitiy;
 
-public class Room {
-   private int id;
+import java.util.List;
+import java.util.Queue;
+
+public class Room extends BaseEntity{
    private Status status;
    private int price;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+   private int capacity;
+   private List<String> visitors;
+   private Queue<String> visitorsHistory;
 
     public Status getStatus() {
         return status;

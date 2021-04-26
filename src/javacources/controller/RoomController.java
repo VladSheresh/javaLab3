@@ -1,6 +1,7 @@
 package javacources.controller;
 
-import javacources.service.RoomService;
+import javacources.entitiy.Room;
+import javacources.api.services.RoomService;
 import javacources.service.RoomServiceImpl;
 
 public class RoomController {
@@ -19,7 +20,9 @@ public class RoomController {
     }
 
     public void addRoom(int price){
-        roomService.addRoom(price);
+        Room room = new Room();
+        room.setPrice(price);
+        roomService.add(room);
     }
 
     public void changePrice(int roomId, int price){

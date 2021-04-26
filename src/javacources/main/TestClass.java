@@ -2,9 +2,8 @@ package javacources.main;
 
 import javacources.counstructor.Context;
 import javacources.counstructor.MainInitializer;
-import javacources.menu.actions.AddRoomAction;
-import javacources.menu.actions.ChangeRoomPriceActoin;
-import javacources.service.RoomService;
+import javacources.actions.AddRoomAction;
+import javacources.actions.ChangeRoomPriceActoin;
 
 public class TestClass {
 

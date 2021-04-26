@@ -1,7 +1,8 @@
 package javacources.service;
 
+import javacources.api.services.ServicesService;
 import javacources.entitiy.Service;
-import javacources.repository.ServicesRepository;
+import javacources.api.repositories.ServicesRepository;
 import javacources.repository.ServicesRepositoryImpl;
 
 public class ServicesServiceImpl implements ServicesService {
@@ -20,16 +21,17 @@ public class ServicesServiceImpl implements ServicesService {
         return instance;
     }
 
-    @Override
-    public void addServices(int price) {
-        Service service = new Service();
-        service.setPrice(price);
-        servicesRepository.addService(service);
-    }
 
     @Override
     public void changePrice(int serviceId, int price) {
-        Service service = servicesRepository.getService(serviceId);
+        Service service = servicesRepository.get(serviceId);
         service.setPrice(price);
+        servicesRepository.update(service);
     }
+
+    @Override
+    public void add(Service service) {
+        servicesRepository.add(service);
+    }
+
 }

@@ -1,8 +1,9 @@
 package javacources.service;
 
+import javacources.api.services.RoomService;
 import javacources.entitiy.Room;
 import javacources.entitiy.Status;
-import javacources.repository.RoomRepository;
+import javacources.api.repositories.RoomRepository;
 import javacources.repository.RoomRepositoryImpl;
 
 public class RoomServiceImpl implements RoomService {
@@ -20,22 +21,22 @@ public class RoomServiceImpl implements RoomService {
         return instance;
     }
 
-    public void addRoom(int price) {
-        Room room = new Room();
+    @Override
+    public void add(Room room) {
         room.setStatus(Status.FREE);
-        room.setPrice(price);
-        roomRepository.addRoom(room);
+        roomRepository.add(room);
     }
 
     @Override
     public void changePrice(int roomId, int price) {
-        Room room = roomRepository.getRoom(roomId);
+        Room room = roomRepository.get(roomId);
         room.setPrice(price);
+        roomRepository.update(room);
     }
 
     @Override
     public void changeStatusToRepairs(int roomId) {
-        Room room = roomRepository.getRoom(roomId);
+        Room room = roomRepository.get(roomId);
         if (room.getStatus() != Status.BUSY) {
             room.setStatus(Status.REPAIRS);
         } else {
@@ -45,7 +46,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void changeStatusToServed(int roomId) {
-        Room room = roomRepository.getRoom(roomId);
+        Room room = roomRepository.get(roomId);
         if (room.getStatus() != Status.BUSY) {
             room.setStatus(Status.SERVED);
         } else {
@@ -55,7 +56,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void settleInRoom(int roomId) {
-        Room room = roomRepository.getRoom(roomId);
+        Room room = roomRepository.get(roomId);
         if (room.getStatus() == Status.FREE) {
             room.setStatus(Status.BUSY);
         } else {
@@ -65,7 +66,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void checkOutTheRoom(int roomId) {
-        Room room = roomRepository.getRoom(roomId);
+        Room room = roomRepository.get(roomId);
         if (room.getStatus() == Status.BUSY) {
             room.setStatus(Status.FREE);
         } else {

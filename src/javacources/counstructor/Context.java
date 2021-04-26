@@ -1,11 +1,6 @@
 package javacources.counstructor;
 
-import javacources.service.RoomService;
-import javacources.service.RoomServiceImpl;
-import javacources.service.ServicesService;
-import javacources.service.ServicesServiceImpl;
-import javacources.repository.ServicesRepository;
-import javacources.repository.ServicesRepositoryImpl;
+import javacources.api.services.ServicesService;
 
 public class Context {
 
